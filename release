@@ -1,0 +1,95 @@
+#!/bin/env python3
+
+import os, subprocess, sys, threading, time
+
+# Blank the screen
+def clear_screen():
+    subprocess.run(['clear'])
+
+def stop_vis():
+    subprocess.run(['killall', 'vis'], capture_output=True)
+
+def play_file(audio):
+    time.sleep(3)
+    subprocess.run(['aplay', audio], capture_output=True)
+
+def show_vis(tty):
+    os.system(f'vis > /dev/pts/{tty}')
+
+with open('Art/ascii-cover.c') as ascii_file:
+    file_list = ascii_file.readlines()
+
+with open('Art/init.txt') as loading_file:
+    load_list = loading_file.readlines()
+
+clear_screen()
+
+file_str = ''.join(file_list)
+load_str = ''.join(load_list)
+
+playback = threading.Thread(target=play_file, args=('listen.wav',))
+playback.start()
+
+# Loading
+for char in load_str:
+    time.sleep(0.01)
+    if char != '!':
+        sys.stdout.write(char)
+        sys.stdout.flush()
+
+# Visualization
+vis = threading.Thread(target=show_vis, args='0')
+vis.start()
+
+# Album art
+for char in file_str:
+    if char != ' ':
+        time.sleep(0.005)
+    sys.stdout.write(char)
+    sys.stdout.flush()
+
+sys.stdout.write('\n')
+sys.stdout.flush()
+
+time.sleep(5)
+
+# Program execution
+for char in "Listen - GeeAre\n\n":
+    time.sleep(0.1)
+    sys.stdout.write(char)
+    sys.stdout.flush()
+
+# Wait for song to end
+playback.join()
+
+clear_screen()
+stop_vis()
+
+coming_soon = """
+
+
+
+
+
+Single Available Now Wherever Music Is Streamed.
+
+!!!!!!!!!!!!!!!!!!!!!!
+
+New Album Coming Soon....
+
+
+
+
+"""
+
+for char in coming_soon:
+    time.sleep(0.01)
+    if char != '!':
+        sys.stdout.write(char)
+        sys.stdout.flush()
+
+time.sleep(5)
+
+clear_screen()
+
+time.sleep(20)
