@@ -12,7 +12,7 @@ If you haven't seen the video, be sure and check that out too! https://youtu.be/
 
 Ensure that all of the enclosed files are present in the same directory, then 
 from a command line or terminal navigate to this folder and run the enclosed 
-`preview` program. For the best effect, run it from within Swordfish90/cool-retro-term for the cool retro effects. It should run just fine, however, in 
+`release` program. For the best effect, run it from within Swordfish90/cool-retro-term for the cool retro effects. It should run just fine, however, in 
 any terminal emulator or command line app you have available. 
 
 Note that audio playback has been disabled in this preview, but you can always
@@ -26,7 +26,7 @@ should run fine wherever Python 3 is available. Python 3.10 is recommended.
 ### Technical Details
 
 The actual animations are implemented as two separate files from the main 
-script, `init.txt` and `ascii-cover-preview.c`. The first phase of the animation
+script, `init.txt` and `ascii-vis.c`. The first phase of the animation
 where it "initializes" the system and loads the program is covered in the 
 init.txt file. Note that `!` characters are not printed; instead these are 
 converted into a 10ms pause. You can modify the length of the pauses by adding 
@@ -34,7 +34,7 @@ or removing `!`'s as you see fit. You can also modify the text to make it say
 different things.
 
 The second phase, where it prints the logo and C program is stored in 
-`ascii-cover-preview.c`, and the timings are more fixed there. Spaces are 
+`ascii-vis.c`, and the timings are more fixed there. Spaces are 
 ignored from the timing to help it print "faster" without speeding up the 
 animation too much. Each non-space character is printed with a 5ms delay. You 
 can modify this file as well, but keep in mind that in its current form it is 
