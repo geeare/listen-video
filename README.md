@@ -10,10 +10,18 @@ If you haven't seen the video, be sure and check that out too! https://youtu.be/
 
 ### Running the visualization animation
 
-Ensure that all of the enclosed files are present in the same directory, then 
-from a command line or terminal navigate to this folder and run the enclosed 
-`release` program. For the best effect, run it from within Swordfish90/cool-retro-term for the cool retro effects. It should run just fine, however, in 
-any terminal emulator or command line app you have available. 
+Ensure that all of the enclosed files are present in the same directory. Then 
+open two terminal windows. From the second command line or terminal navigate to 
+this folder and run the enclosed `release` program. For the best effect, run it 
+from within Swordfish90/cool-retro-term for the cool retro effects. It should 
+run just fine, however, in any terminal emulator or command line app you have 
+available. You can also set the prompt in the first terminal to an empty prompt
+to remove any existing prompt by setting `PS1=""`. This will only take effect 
+until you close your terminal, and only in that one.
+
+Note that you may need to adjust the value of the `TTY` variable depending on 
+how your OS names TTY devices. If you need a reference, you can run the `tty`
+command from the first terminal.
 
 Note that audio playback has been disabled in this preview, but you can always
 check out the [YouTube video](https://youtu.be/qX9AyfQ0l7Q) to listen to the 
