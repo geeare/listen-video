@@ -2,6 +2,8 @@
 
 import os, subprocess, sys, threading, time
 
+TTY='pts/0'
+
 # Blank the screen
 def clear_screen():
     subprocess.run(['clear'])
@@ -14,7 +16,7 @@ def play_file(audio):
     subprocess.run(['aplay', audio], capture_output=True)
 
 def show_vis(tty):
-    os.system(f'vis > /dev/pts/{tty}')
+    os.system(f'vis > /dev/{tty}')
 
 with open('Art/ascii-cover.c') as ascii_file:
     file_list = ascii_file.readlines()
@@ -38,7 +40,7 @@ for char in load_str:
         sys.stdout.flush()
 
 # Visualization
-vis = threading.Thread(target=show_vis, args='0')
+vis = threading.Thread(target=show_vis, args=TTY)
 vis.start()
 
 # Album art
